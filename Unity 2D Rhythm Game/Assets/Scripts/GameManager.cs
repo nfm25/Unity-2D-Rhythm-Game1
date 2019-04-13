@@ -14,7 +14,10 @@ public class GameManager : MonoBehaviour
                                                         //만일의 오류 발생을 방지해준다.
     }
 
-    public float noteSpeed;
+    public float noteSpeed; // 노트스피드는 유니티 인스펙터 창에서 0.05로 값을 입력해주었다.
+
+    public enum judges {  NONE = 0, BAD, GOOD, PERFECT, MISS}; // enum자료형을 사용했으므로, 자동으로 none=0, bad= 1, good= 2, perfect =3, miss =4)
+    // enum 자료형은 문자열(good, bad, perfect등..)과 같은 특정 변수에 숫자를 매칭하여, 그 숫자들로 관리할 수 있게한다.
 
 
     void Start()
