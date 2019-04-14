@@ -39,9 +39,24 @@ public class GameManager : MonoBehaviour
     private SpriteRenderer[] trailSpriteRenderers;
     // 각각의 trails 변수들의 SpriteRenderer에 접근해서 그 투명도의 값을 변경해주기 위해 trailSpriteRenderers를 통해 처리할 수 있도록 만들어 줌
 
+    //음악 변수를 만들어주자
+    private AudioSource audioSource;
+    private string music = "Drops of H20"; // "음악파일이름"
+
+    //음악을 실행하는 함수를 만들자
+    void MusicStart()
+    {
+        // 리소스에서 비트(Beat) 음악 파일을 불러와 재생한다.
+        AudioClip audioClip = Resources.Load<AudioClip>("Beats/" + music);
+        audioSource = GetComponent<AudioSource>(); // GameManager에 있는 AudioSource 컴포넌트를 받아와서
+        audioSource.clip = audioClip;
+        audioSource.Play();
+    }
+
 
     void Start()
     {
+        Invoke("MusicStart", 2); // 게임실행 후 2초 뒤에 재생하도록..
         judgementSpriteRenderer = judgeUI.GetComponent<Image>();
         //judgementSpriteRenderer 경우에는 judgeUI에서 Image 컴포넌트를 받아와서 초기화
         judgementSpriteAnimator = judgeUI.GetComponent<Animator>();
