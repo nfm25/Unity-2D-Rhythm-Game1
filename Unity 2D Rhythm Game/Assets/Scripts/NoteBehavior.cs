@@ -29,7 +29,7 @@ public class NoteBehavior : MonoBehaviour
         if(Input.GetKey(keyCode))
         {
             //해당 노트에 대한 판정을 진행합니다.
-            Debug.Log(judge);
+            GameManager.instance.processJudge(judge, noteType);
 
             //노트가 판정 선에 닿기 시작한 이후로는 노트를 제거해준다.
             if (judge != GameManager.judges.NONE) gameObject.SetActive(false); // 노트가 판정선에 닿지 않은 상태가 아니라면, 즉..
@@ -54,6 +54,8 @@ public class NoteBehavior : MonoBehaviour
         else if (other.gameObject.tag == "Miss Line")
         {
             judge = GameManager.judges.MISS;
+            GameManager.instance.processJudge(judge, noteType); // 사용자가 키코드를 누르지 않아도 MISS판정을 받아야 하므로, 
+            //MISS 판정을 받았을 때도 해당 판정을 처리할 수 있도록하여 콤보가 끊길 수 있도록 해준다.
             gameObject.SetActive(false); // miss 판정나면 바로 노트가 삭제되도록..
         }
         
