@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
 
     //음악 변수를 만들어주자
     private AudioSource audioSource;
-    private string music = "Drops of H20"; // "음악파일이름"
+    public string music = "1"; // "음악파일이름" 사용자가 선택한 곡을 외부스크립트에서 접근할 수 있도록 public 선언해준다.
 
     //음악을 실행하는 함수를 만들자
     void MusicStart()
